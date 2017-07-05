@@ -9,4 +9,10 @@ public class Flight {
     public GMTtime departureTime;
     public String arrivalAirportCode;
     public GMTtime arrivalTime;
+
+    public String toString() {
+	return ("Flight from " + departureAirportCode + " at " +
+		departureTime + " to " + arrivalAirportCode +
+		" at " + arrivalTime);
+    }
 }
