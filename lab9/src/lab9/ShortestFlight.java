@@ -18,6 +18,16 @@ public class ShortestFlight {
     private static Map<String, Integer> airportTimeZoneMap = new HashMap<String, Integer>();
     private static List<Flight> flights = new ArrayList<Flight>();
 
+    private static void findBestRoute(String airportOrigin,
+				      String airportDestination,
+				      GMTtime leaveTime) {
+	// TODO: Implement here your code to find the earliest arrival route from
+	// origin to destination.
+	// Remember the constraints: the flight must leave no eariler than 1 hour
+	// after leave time, it must have at least one layover, and each layover
+	// needs to be at least 1 hour.
+    }
+
     public static void main(String[] args) {
 	if (args.length != 4) {
 	    System.out.println("Usage: AirportOrigin AirportDestination Time A/P");
@@ -31,7 +41,8 @@ public class ShortestFlight {
 	GMTtime leaveTime = new GMTtime(Integer.parseInt(args[2]),
 					airportTimeZoneMap.get(airportOrigin),
 					args[3].equals('A'));
-	return;
+
+	findBestRoute(airportOrigin, airportDestination, leaveTime);
     }
 
     private static void readAirportData() {
