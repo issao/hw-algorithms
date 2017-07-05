@@ -11,7 +11,7 @@ public class Flight {
     public GMTtime arrivalTime;
 
     public String toString() {
-	return ("Flight from " + departureAirportCode + " at " +
+	return ("Flight " + airline + flightNum + " from " + departureAirportCode + " at " +
 		departureTime + " to " + arrivalAirportCode +
 		" at " + arrivalTime);
     }
