@@ -15,13 +15,16 @@ import java.util.StringTokenizer;
 
 public class ShortestFlight {
 
+    private static Map<String, Integer> airportTimeZoneMap = new HashMap<String, Integer>();
+    private static List<Flight> flights = new ArrayList<Flight>();
+
     public static void main(String[] args) {
 	if (args.length != 4) {
 	    System.out.println("Usage: AirportOrigin AirportDestination Time A/P");
 	    return;
 	}
-	Map<String, Integer> airportTimeZoneMap = readAirportData();
-	List<Flight> flights = readFlightData(airportTimeZoneMap);
+	readAirportData();
+	readFlightData(airportTimeZoneMap);
 
 	String airportOrigin = args[0];
 	String airportDestination = args[1];
@@ -31,15 +34,14 @@ public class ShortestFlight {
 	return;
     }
 
-    private static Map<String, Integer> readAirportData() {
-	Map<String, Integer> airportTimeZoneMap = new HashMap<String, Integer>();
+    private static void readAirportData() {
 	BufferedReader r;
 	try {
 	    InputStream is = new FileInputStream("input/airport-data.txt");
 	    r = new BufferedReader(new InputStreamReader(is));
 	} catch (IOException e) {
 	    System.out.println("IOException while opening airport-data.txt\n" + e);
-	    return null;
+	    return;
 	}
 	try {
 	    String nextline = r.readLine();
@@ -55,20 +57,18 @@ public class ShortestFlight {
 	} catch (IOException e) {
 	    System.out.println("IOException while reading sequence from " +
 			       "airport-data.txt\n" + e);
-	    return null;
+	    return;
 	}
-	return airportTimeZoneMap;
     }
 
-    private static List<Flight> readFlightData(Map<String, Integer> airportTimeZoneMap) {
-	List<Flight> flights = new ArrayList<Flight>();
+    private static void readFlightData(Map<String, Integer> airportTimeZoneMap) {
 	BufferedReader r;
 	try {
 	    InputStream is = new FileInputStream("input/flight-data.txt");
 	    r = new BufferedReader(new InputStreamReader(is));
 	} catch (IOException e) {
 	    System.out.println("IOException while opening flight-data.txt\n" + e);
-	    return null;
+	    return;
 	}
 	try {
 	    String nextline = r.readLine();
@@ -91,8 +91,7 @@ public class ShortestFlight {
 	} catch (IOException e) {
 	    System.out.println("IOException while reading sequence from " +
 			       "flight-data.txt\n" + e);
-	    return null;
+	    return;
 	}
-	return flights;
     }
 }
