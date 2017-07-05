@@ -40,7 +40,7 @@ public class ShortestFlight {
 	String airportDestination = args[1];
 	GMTtime leaveTime = new GMTtime(Integer.parseInt(args[2]),
 					airportTimeZoneMap.get(airportOrigin),
-					args[3].equals('A'));
+					args[3].startsWith("A"));
 
 	findBestRoute(airportOrigin, airportDestination, leaveTime);
     }
